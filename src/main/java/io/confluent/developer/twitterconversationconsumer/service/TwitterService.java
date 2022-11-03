@@ -20,6 +20,6 @@ public class TwitterService {
                 .text(tweetRecord.getText())
                 .possibly_sensitive(tweetRecord.isPossibly_sensitive())
                 .build();
-        return tweet;
+        return twitterRepository.save(tweet);
     }
 }
