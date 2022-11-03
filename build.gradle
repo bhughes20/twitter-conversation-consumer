@@ -1,3 +1,9 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
@@ -17,21 +23,15 @@ configurations {
 }
 
 repositories {
+	jcenter()
 	mavenCentral()
 	maven {
 		url = uri("https://packages.confluent.io/maven/")
-	}
-	maven {
-		url = uri("https://plugins.gradle.org/m2/")
-	}
-	maven {
-		url = uri("https://jitpack.io")
 	}
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.kafka:spring-kafka'
 	implementation 'org.apache.avro:avro:1.11.0'
 	implementation "io.confluent:kafka-avro-serializer:7.1.1"
