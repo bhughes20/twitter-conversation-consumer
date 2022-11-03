@@ -2,6 +2,7 @@ package io.confluent.developer.twitterconversationconsumer.service;
 
 import io.confluent.developer.twitterconversationconsumer.model.Tweet;
 import io.confluent.developer.twitterconversationconsumer.repository.TwitterRepository;
+import io.confluent.ksql.avro_schemas.KsqlDataSourceSchema;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,12 +32,21 @@ public class TwitterServiceTest {
                 .possibly_sensitive(false)
                 .build();
 
+        KsqlDataSourceSchema tweetRecord = KsqlDataSourceSchema.newBuilder()
+                .setID("1050118621198921728")
+                .setCONVERSATIONID("1212092627178287104")
+                .setAUTHORID("2244994945")
+                .setCREATEDAT("2022-11-02T23:12:08.000Z")
+                .setTEXT("This is sample twitter text")
+                .setPOSSIBLYSENSITIVE(false)
+                .build();
+
         when(twitterRepository.save(tweet)).thenReturn(tweet);
         //Act
-        Tweet savedTweet = twitterService.saveTweet(tweet);
+        Tweet savedTweet = twitterService.saveTweet(tweetRecord);
         //Assert
         assertThat(savedTweet).isNotNull();
-        assertEquals(savedTweet.getId(), tweet.getId());
+        assertEquals(savedTweet.getId(), tweetRecord.getID());
     }
 
 }

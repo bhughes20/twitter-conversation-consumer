@@ -2,6 +2,7 @@ package io.confluent.developer.twitterconversationconsumer.service;
 
 import io.confluent.developer.twitterconversationconsumer.model.Tweet;
 import io.confluent.developer.twitterconversationconsumer.repository.TwitterRepository;
+import io.confluent.ksql.avro_schemas.KsqlDataSourceSchema;
 
 public class TwitterService {
 
@@ -11,14 +12,14 @@ public class TwitterService {
         this.twitterRepository = twitterRepository;
     }
 
-    public Tweet saveTweet(Tweet tweetRecord) {
+    public Tweet saveTweet(KsqlDataSourceSchema tweetRecord) {
         Tweet tweet = Tweet.builder()
-                .id(tweetRecord.getId())
-                .conversation_id(tweetRecord.getConversation_id())
-                .created_at(tweetRecord.getCreated_at())
-                .author_id(tweetRecord.getAuthor_id())
-                .text(tweetRecord.getText())
-                .possibly_sensitive(tweetRecord.isPossibly_sensitive())
+                .id(tweetRecord.getID())
+                .conversation_id(tweetRecord.getCONVERSATIONID())
+                .created_at(tweetRecord.getCREATEDAT())
+                .author_id(tweetRecord.getAUTHORID())
+                .text(tweetRecord.getTEXT())
+                .possibly_sensitive(tweetRecord.getPOSSIBLYSENSITIVE())
                 .build();
         return twitterRepository.save(tweet);
     }
