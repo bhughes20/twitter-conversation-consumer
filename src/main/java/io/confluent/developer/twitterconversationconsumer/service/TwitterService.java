@@ -3,7 +3,9 @@ package io.confluent.developer.twitterconversationconsumer.service;
 import io.confluent.developer.twitterconversationconsumer.model.Tweet;
 import io.confluent.developer.twitterconversationconsumer.repository.TwitterRepository;
 import io.confluent.ksql.avro_schemas.KsqlDataSourceSchema;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TwitterService {
 
     private TwitterRepository twitterRepository;

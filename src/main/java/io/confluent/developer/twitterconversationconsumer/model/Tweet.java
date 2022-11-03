@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "conversation_tweets")
 @Data
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class Tweet {
     @Id
