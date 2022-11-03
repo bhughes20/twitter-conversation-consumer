@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tweet {
+public class TweetEntity {
     @Id
     private String id;
     private String conversation_id;

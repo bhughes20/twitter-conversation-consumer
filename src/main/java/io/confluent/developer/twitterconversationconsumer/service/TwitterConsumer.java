@@ -1,6 +1,6 @@
 package io.confluent.developer.twitterconversationconsumer.service;
 
-import io.confluent.ksql.avro_schemas.KsqlDataSourceSchema;
+import io.confluent.developer.avro.Tweet;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,15 @@ public class TwitterConsumer {
     }
 
     @KafkaListener(id = "#{'${group.id}'}", topics = "#{'${input.topic.name}'}")
-    public void consume(final ConsumerRecord<String, KsqlDataSourceSchema> tweetRecord){
-        KsqlDataSourceSchema tweetRecord2 = tweetRecord.value();
-        System.out.println(tweetRecord2.getID());
+    public void consume(final ConsumerRecord<String, Tweet> tweetRecord){
+        /*
+         The intention had been to pass in the avro Tweet Record to the TwitterService
+         to save to repository and H2 database but java.lang.ClassCastException
+         is occurring trying to convert the avro object to Tweet entity.
+
+         As an alternative the avro serialized record is printed to console.
+         */
+
 //        twitterService.saveTweet(tweetRecord.value());
         System.out.println(String.format("Consumed event from topic %s: key = %-10s value = %s", tweetRecord.topic(), tweetRecord.key(), tweetRecord.value()));
     }

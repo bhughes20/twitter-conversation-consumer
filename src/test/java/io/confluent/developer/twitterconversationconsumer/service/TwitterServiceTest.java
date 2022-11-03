@@ -1,8 +1,8 @@
 package io.confluent.developer.twitterconversationconsumer.service;
 
-import io.confluent.developer.twitterconversationconsumer.model.Tweet;
+import io.confluent.developer.avro.Tweet;
+import io.confluent.developer.twitterconversationconsumer.model.TweetEntity;
 import io.confluent.developer.twitterconversationconsumer.repository.TwitterRepository;
-import io.confluent.ksql.avro_schemas.KsqlDataSourceSchema;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,7 +23,7 @@ public class TwitterServiceTest {
     @Test
     public void givenTweetRecordObject_whenSaveTweet_thenShouldReturnTweetObject(){
         //Arrange
-        Tweet tweet = Tweet.builder()
+        TweetEntity tweetEntity = TweetEntity.builder()
                 .id("1050118621198921728")
                 .conversation_id("1212092627178287104")
                 .created_at("2022-11-02T23:12:08.000Z")
@@ -32,21 +32,21 @@ public class TwitterServiceTest {
                 .possibly_sensitive(false)
                 .build();
 
-        KsqlDataSourceSchema tweetRecord = KsqlDataSourceSchema.newBuilder()
-                .setID("1050118621198921728")
-                .setCONVERSATIONID("1212092627178287104")
-                .setAUTHORID("2244994945")
-                .setCREATEDAT("2022-11-02T23:12:08.000Z")
-                .setTEXT("This is sample twitter text")
-                .setPOSSIBLYSENSITIVE(false)
+        Tweet tweetRecord = Tweet.newBuilder()
+                .setId("1050118621198921728")
+                .setConversationId("1212092627178287104")
+                .setAuthorId("2244994945")
+                .setCreatedAt("2022-11-02T23:12:08.000Z")
+                .setText("This is sample twitter text")
+                .setPossiblySensitive(false)
                 .build();
 
-        when(twitterRepository.save(tweet)).thenReturn(tweet);
+        when(twitterRepository.save(tweetEntity)).thenReturn(tweetEntity);
         //Act
-        Tweet savedTweet = twitterService.saveTweet(tweetRecord);
+        TweetEntity savedTweetEntity = twitterService.saveTweet(tweetRecord);
         //Assert
-        assertThat(savedTweet).isNotNull();
-        assertEquals(savedTweet.getId(), tweetRecord.getID());
+        assertThat(savedTweetEntity).isNotNull();
+        assertEquals(savedTweetEntity.getId(), tweetRecord.getId());
     }
 
 }

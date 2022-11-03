@@ -1,55 +1,31 @@
 {
-  "fields": [
+    "name": "Tweet",
+    "namespace": "io.confluent.developer.avro",
+    "type": "record",
+    "fields": [
     {
-      "default": null,
-      "name": "ID",
-      "type": [
-        "null",
-        "string"
-      ]
+      "name": "id",
+      "type": "string"
     },
     {
-      "default": null,
-      "name": "CONVERSATION_ID",
-      "type": [
-        "null",
-        "string"
-      ]
+      "name": "conversation_id",
+      "type": "string"
     },
     {
-      "default": null,
-      "name": "CREATED_AT",
-      "type": [
-        "null",
-        "string"
-      ]
+      "name": "created_at",
+      "type": "string"
     },
     {
-      "default": null,
-      "name": "AUTHOR_ID",
-      "type": [
-        "null",
-        "string"
-      ]
+      "name": "author_id",
+      "type": "string"
     },
     {
-      "default": null,
-      "name": "TEXT",
-      "type": [
-        "null",
-        "string"
-      ]
+      "name": "text",
+      "type": "string"
     },
     {
-      "default": null,
-      "name": "POSSIBLY_SENSITIVE",
-      "type": [
-        "null",
-        "boolean"
-      ]
+      "name": "possibly_sensitive",
+      "type": "boolean"
     }
-  ],
-  "name": "KsqlDataSourceSchema",
-  "namespace": "io.confluent.ksql.avro_schemas",
-  "type": "record"
+  ]
 }
