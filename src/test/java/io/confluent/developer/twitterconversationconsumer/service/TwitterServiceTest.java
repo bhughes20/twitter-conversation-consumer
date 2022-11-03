@@ -1,6 +1,7 @@
 package io.confluent.developer.twitterconversationconsumer.service;
 
 import io.confluent.developer.twitterconversationconsumer.model.Tweet;
+import io.confluent.developer.twitterconversationconsumer.repository.TwitterRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -10,6 +11,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(MockitoExtension.class)
 public class TwitterServiceTest {
 
+    private TwitterRepository twitterRepository;
+    private TwitterService twitterService;
     @Test
     public void givenTweetRecordObject_whenSaveTweet_thenShouldReturnTweetObject(){
 
@@ -22,7 +25,8 @@ public class TwitterServiceTest {
                 .possibly_sensitive(false)
                 .build();
 
-        Tweet savedTweet = new Tweet();
+        twitterService = new TwitterService(twitterRepository);
+        Tweet savedTweet = twitterService.saveTweet(tweet);
 
         assertThat(savedTweet).isNotNull();
     }
