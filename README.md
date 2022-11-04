@@ -5,8 +5,8 @@ The events being consumed are twitter conversations i.e. tweets that are posted 
 
 ## Technologies
 
-Uses Spring Boot with confluent cloud  
+Uses Spring Boot with Java 11, Gradle, Spring Kafka, Spring Data JPA, H2 Database and Lombok.
 
 ## Pre-requisites
 
-Sign up for a confluent cloud account and follow documents/tutorials for configuring application properties with [Confluent Developer]([https://write.geeksforgeeks.org/](https://developer.confluent.io/)).
+Sign up for a confluent cloud account and follow documents/tutorials for configuring application properties with [Confluent Developer](https://developer.confluent.io/).
