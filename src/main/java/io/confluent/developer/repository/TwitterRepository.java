@@ -1,6 +1,6 @@
-package io.confluent.developer.twitterconversationconsumer.repository;
+package io.confluent.developer.repository;
 
-import io.confluent.developer.twitterconversationconsumer.model.TweetEntity;
+import io.confluent.developer.model.TweetEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

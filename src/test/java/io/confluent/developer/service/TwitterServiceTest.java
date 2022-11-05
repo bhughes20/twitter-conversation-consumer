@@ -1,8 +1,8 @@
-package io.confluent.developer.twitterconversationconsumer.service;
+package io.confluent.developer.service;
 
 import io.confluent.developer.avro.Tweet;
-import io.confluent.developer.twitterconversationconsumer.model.TweetEntity;
-import io.confluent.developer.twitterconversationconsumer.repository.TwitterRepository;
+import io.confluent.developer.repository.TwitterRepository;
+import io.confluent.developer.model.TweetEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

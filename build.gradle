@@ -1,6 +1,5 @@
 buildscript {
 	repositories {
-		jcenter()
 		mavenCentral()
 		maven {
 			url = uri("https://packages.confluent.io/maven/")
@@ -36,7 +35,6 @@ configurations {
 }
 
 repositories {
-	jcenter()
 	mavenCentral()
 	maven {
 		url = uri("https://packages.confluent.io/maven/")

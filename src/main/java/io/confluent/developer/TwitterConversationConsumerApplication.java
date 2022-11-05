@@ -1,4 +1,4 @@
-package io.confluent.developer.twitterconversationconsumer;
+package io.confluent.developer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
